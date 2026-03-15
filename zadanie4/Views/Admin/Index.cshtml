@@ -1,0 +1,36 @@
+@model IEnumerable<zadanie4.Models.ProfilUzytkownika>
+@{
+    ViewData["Title"] = "Panel - Historia ankiet";
+}
+
+<h2>Historia przesłanych ankiet</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Imię</th>
+            <th>Ciało</th>
+            <th>Umysł</th>
+            <th>Relacje</th>
+            <th>Praca</th>
+            <th>Duchowość</th>
+            <th>Utworzono</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Imie</td>
+            <td>@item.Cialo</td>
+            <td>@item.Umysl</td>
+            <td>@item.Relacje</td>
+            <td>@item.Praca</td>
+            <td>@item.Duchowosc</td>
+            <td>@item.CreatedAt.ToLocalTime()</td>
+        </tr>
+    }
+    </tbody>
+</table>

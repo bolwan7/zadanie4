@@ -1,0 +1,18 @@
+﻿@model zadanie4.Models.ProfilUzytkownika
+@{
+    ViewData["Title"] = "Twój profil";
+}
+
+<h2>Profil użytkownika: @Model.Imie</h2>
+
+<table border="1" cellpadding="8">
+    <tr><th>Kategoria</th><th>Punkty</th></tr>
+    <tr><td>Ciało</td><td>@Model.Cialo</td></tr>
+    <tr><td>Umysł</td><td>@Model.Umysl</td></tr>
+    <tr><td>Relacje</td><td>@Model.Relacje</td></tr>
+    <tr><td> Praca</td><td>@Model.Praca</td></tr>
+    <tr><td>Duchowość</td><td>@Model.Duchowosc</td></tr>
+</table>
+
+<br />
+<a href="@Url.Action("Index", "Quiz")">Wróć do quizu</a>

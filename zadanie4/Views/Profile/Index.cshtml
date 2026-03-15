@@ -1,0 +1,19 @@
+@model zadanie4.Models.ApplicationUser
+@{
+    ViewData["Title"] = "Mój profil";
+}
+
+<h2>Mój profil</h2>
+
+<div>
+    <p><strong>Login:</strong> @Model.UserName</p>
+    <p><strong>Wyświetlana nazwa:</strong> @Model.DisplayName</p>
+</div>
+
+<form asp-action="UpdateDisplayName" method="post">
+    <div class="mb-3">
+        <label for="displayName" class="form-label">Wyświetlana nazwa</label>
+        <input id="displayName" name="displayName" class="form-control" value="@Model.DisplayName" />
+    </div>
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+</form>

@@ -1,0 +1,40 @@
+@model IEnumerable<zadanie4.Models.Pytanie>
+@{
+    ViewData["Title"] = "Wartości punktów pytań";
+}
+
+<h2>Wartości punktów dla pytań i odpowiedzi</h2>
+
+@foreach (var pyt in Model)
+{
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">@pyt.Id. @pyt.Tresc</h5>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Odpowiedź</th>
+                        <th>Ciało</th>
+                        <th>Umysł</th>
+                        <th>Relacje</th>
+                        <th>Praca</th>
+                        <th>Duchowość</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var odp in pyt.Odpowiedzi.OrderBy(o => o.Id))
+                {
+                    <tr>
+                        <td>@odp.Tresc</td>
+                        <td>@odp.PunktyCialo</td>
+                        <td>@odp.PunktyUmysl</td>
+                        <td>@odp.PunktyRelacje</td>
+                        <td>@odp.PunktyPraca</td>
+                        <td>@odp.PunktyDuchowosc</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

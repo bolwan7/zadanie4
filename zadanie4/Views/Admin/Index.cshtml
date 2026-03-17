@@ -9,7 +9,7 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Imię</th>
+            <th>Email</th>
             <th>Ciało</th>
             <th>Umysł</th>
             <th>Relacje</th>
@@ -23,7 +23,7 @@
     {
         <tr>
             <td>@item.Id</td>
-            <td>@item.Imie</td>
+            <td>@(item.ApplicationUser?.Email ?? item.Imie)</td>
             <td>@item.Cialo</td>
             <td>@item.Umysl</td>
             <td>@item.Relacje</td>

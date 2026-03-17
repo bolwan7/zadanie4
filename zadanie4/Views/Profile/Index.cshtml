@@ -1,4 +1,4 @@
-@model zadanie4.Models.ApplicationUser
+@model zadanie4.ViewModels.ProfileViewModel
 @{
     ViewData["Title"] = "Mój profil";
 }
@@ -6,14 +6,51 @@
 <h2>Mój profil</h2>
 
 <div>
-    <p><strong>Login:</strong> @Model.UserName</p>
-    <p><strong>Wyświetlana nazwa:</strong> @Model.DisplayName</p>
+    <p><strong>Login:</strong> @Model.User?.UserName</p>
+    <p><strong>Wyświetlana nazwa:</strong> @Model.User?.DisplayName</p>
 </div>
 
 <form asp-action="UpdateDisplayName" method="post">
     <div class="mb-3">
         <label for="displayName" class="form-label">Wyświetlana nazwa</label>
-        <input id="displayName" name="displayName" class="form-control" value="@Model.DisplayName" />
+        <input id="displayName" name="displayName" class="form-control" value="@Model.User?.DisplayName" />
     </div>
     <button type="submit" class="btn btn-primary">Zapisz</button>
 </form>
+
+<h3 class="mt-4">Moje poprzednie odpowiedzi</h3>
+
+@if (Model.Profiles != null && Model.Profiles.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ciało</th>
+                <th>Umysł</th>
+                <th>Relacje</th>
+                <th>Praca</th>
+                <th>Duchowość</th>
+                <th>Utworzono</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Profiles)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Cialo</td>
+                <td>@item.Umysl</td>
+                <td>@item.Relacje</td>
+                <td>@item.Praca</td>
+                <td>@item.Duchowosc</td>
+                <td>@item.CreatedAt.ToLocalTime()</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Brak zapisanych odpowiedzi.</p>
+}
